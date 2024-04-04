@@ -21,7 +21,6 @@ const Dashboard = () => {
 
         const driversStatuses = await Api.request(path)
         if (driversStatuses) setDriversStatuses(driversStatuses)
-        console.log({ driversStatuses })
     }, [])
 
     useEffect(() => {

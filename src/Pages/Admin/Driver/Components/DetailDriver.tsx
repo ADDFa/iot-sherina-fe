@@ -40,11 +40,14 @@ const DetailDriver = () => {
                                     <th scope="col" colSpan={3}>
                                         Status
                                     </th>
+                                    <th scope="col" rowSpan={2}>
+                                        Keadaan
+                                    </th>
                                 </tr>
                                 <tr>
-                                    <th scope="col">Detak Jantung</th>
+                                    <th scope="col">BPM</th>
+                                    <th scope="col">SpO2</th>
                                     <th scope="col">Kedipan</th>
-                                    <th scope="col">Keadaan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,8 +56,9 @@ const DetailDriver = () => {
                                         {
                                             id,
                                             blink_count,
-                                            confidence,
                                             state_status,
+                                            bpm,
+                                            spO2,
                                             updated_at
                                         }: Record<string, any>,
                                         i: number
@@ -64,9 +68,18 @@ const DetailDriver = () => {
                                             <td>
                                                 {ParseDate.date(updated_at)}
                                             </td>
-                                            <td>{confidence}</td>
+                                            <td>{bpm}</td>
+                                            <td>{spO2}</td>
                                             <td>{blink_count}/menit</td>
-                                            <td>{state_status}</td>
+                                            <td
+                                                className={`bg-${
+                                                    state_status === "Lelah"
+                                                        ? "warning"
+                                                        : "success"
+                                                }`}
+                                            >
+                                                {state_status}
+                                            </td>
                                         </tr>
                                     )
                                 )}

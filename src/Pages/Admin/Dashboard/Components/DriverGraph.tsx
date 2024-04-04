@@ -13,6 +13,7 @@ const DriverGraph: FC<{ driverStatuses: Record<string, any>[] }> = ({
         const labels: string[] = []
         const detakJantung: number[] = []
         const blinkCount: number[] = []
+        const spO2Data: number[] = []
         const datasets: ChartDataset[] = [
             {
                 label: "Detak Jantung",
@@ -21,13 +22,18 @@ const DriverGraph: FC<{ driverStatuses: Record<string, any>[] }> = ({
             {
                 label: "Kedipan",
                 data: blinkCount
+            },
+            {
+                label: "SpO2",
+                data: spO2Data
             }
         ]
 
-        driverStatuses.forEach(({ confidence, blink_count, driver }) => {
+        driverStatuses.forEach(({ bpm, blink_count, spO2, driver }) => {
             labels.push(driver.name)
-            detakJantung.push(confidence)
+            detakJantung.push(bpm)
             blinkCount.push(blink_count)
+            spO2Data.push(spO2)
         })
 
         const data: ChartData = { labels, datasets }
