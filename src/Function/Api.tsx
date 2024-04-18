@@ -3,7 +3,7 @@ import {} from "./Firebase"
 import HandleError from "./HandleError"
 
 class Api {
-    private static base_url = "http://127.0.0.1:8000"
+    private static base_url = "https://iot-sherina.000webhostapp.com"
 
     static get baseUrl() {
         return this.base_url
